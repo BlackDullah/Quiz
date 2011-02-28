@@ -6,15 +6,16 @@ import java.util.ArrayList;
 
 public class Quiz {
 
+	int quizPosition = 0;
+	static ArrayList<String[]> values = new ArrayList<String[]>();
+
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		BufferedReader reader;
 		String zeile = null;
-		ArrayList<String[]> values = new ArrayList<String[]>();
 
 		try {
 			reader = new BufferedReader(new FileReader("fragen.txt"));
@@ -30,56 +31,28 @@ public class Quiz {
 			System.err.println("Error2 :" + e);
 		}
 
-		showQuestions(values);
+		// showQuestions(values);
 
 		System.out.println("Ein kleines Quiz...");
-		// frage1();
+		quiz(0);
 	}
 
-	public static void showQuestions(ArrayList<String[]> values) {
-		// System.out.println(values.get(0)[0]);
-		// System.out.println(values.get(1)[0]);
-
-		for (int i = 1; i < 10; i++) {
-			System.out.println(values.get(i)[0]);
-			i++;
+	public static void quiz(int position) {
+		if (position >= 9) {
+			return;
 		}
-	}
-
-	public static void frage1() {
-
-		System.out
-				.println("Die erste Frage lautet: In welcher Sprache ist dieses Programm geschrieben?");
+		System.out.println(values.get(position)[0]);
 		Console console = System.console();
 		String myString = console.readLine("Antwort: ");
 
-		if (myString.equalsIgnoreCase("Java")) {
+		if (myString.equalsIgnoreCase(values.get(position + 1)[0])) {
 			System.out.println("Richtig");
-			frage2();
-
+			position = position + 2;
+			quiz(position);
 		}
 
 		else {
-			frage1();
+			quiz(position);
 		}
-
 	}
-
-	public static void frage2() {
-
-		System.out.println("Wie hei§t dieses Progrmm?");
-		Console console = System.console();
-		String myString = console.readLine("Antwort: ");
-
-		if (myString.equalsIgnoreCase("Quiz")) {
-			System.out.println("Richtig");
-
-		}
-
-		else {
-			frage2();
-		}
-
-	}
-
 }
