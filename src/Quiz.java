@@ -38,7 +38,8 @@ public class Quiz {
 	}
 
 	public static void quiz(int position) {
-		if (position >= 9) {
+		if (position >= (values.size() - 1)) {
+			quizend();
 			return;
 		}
 		System.out.println(values.get(position)[0]);
@@ -57,7 +58,7 @@ public class Quiz {
 
 	}
 
-	public static void ende() {
+	public static void quizend() {
 		System.out
 				.println("Herlichen Glückwunsch, Sie haben das Quiz erfolgreich beendet!");
 	}
