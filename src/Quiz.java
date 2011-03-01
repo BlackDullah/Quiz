@@ -68,10 +68,10 @@ public class Quiz {
 	}
 
 	public static void quizend() {
-		System.out
-				.println("Herlichen Glückwunsch, Sie haben das Quiz erfolgreich beendet!");
+		System.out.println("Herlichen Glueckwunsch " + name);
+		System.out.println("du hast das Quiz erfolgreich beendet!");
 
-		System.out.println("Möchten Sie das Quiz erneut starten?");
+		System.out.println("Moechtest du das Quiz erneut starten?");
 		System.out.println("Geben Sie JA oder NEIN ein!");
 
 		Console console = System.console();
@@ -84,12 +84,12 @@ public class Quiz {
 	public static void checkName(String ans) {
 
 		if (ans.equals("JA")) {
-			System.out.println(ans + " ich möchte das Quiz wiederholen!");
+			System.out.println(ans + " ich moechte das Quiz wiederholen!");
 
 			quiz(0);
 
 		} else {
-			System.out.println("Nein ich möchte das Quiz nicht wiederholen!");
+			System.out.println("Nein ich moechte das Quiz nicht wiederholen!");
 			System.out.println(name + " hat das Quiz beendet!");
 
 		}
