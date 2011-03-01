@@ -54,5 +54,12 @@ public class Quiz {
 		else {
 			quiz(position);
 		}
+
 	}
+
+	public static void ende() {
+		System.out
+				.println("Herlichen Glückwunsch, Sie haben das Quiz erfolgreich beendet!");
+	}
+
 }
