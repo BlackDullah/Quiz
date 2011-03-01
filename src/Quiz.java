@@ -40,7 +40,7 @@ public class Quiz {
 
 		Console console = System.console();
 		name = console.readLine("Geben Sie Ihren Namen an: ");
-		System.out.println("Name: " + name);
+		System.out.println("Hallo " + name);
 
 		System.out.println("Ein kleines Quiz...");
 		quiz(0);
@@ -90,7 +90,7 @@ public class Quiz {
 
 		} else {
 			System.out.println("Nein ich mšchte das Quiz nicht wiederholen!");
-			System.out.println(name + " haben das Quiz beendet!");
+			System.out.println(name + " hat das Quiz beendet!");
 
 		}
 	}
