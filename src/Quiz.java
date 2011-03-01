@@ -39,10 +39,10 @@ public class Quiz {
 	public static void name() {
 
 		Console console = System.console();
-		name = console.readLine("Geben Sie Ihren Namen an: ");
+		name = console.readLine("Geben Sie Ihren Vornamen an: ");
 		System.out.println("Hallo " + name);
 
-		System.out.println("Ein kleines Quiz...");
+		System.out.println("Ich habe ein kleines Quiz fuer dich erstellt...");
 		quiz(0);
 	}
 
