@@ -61,6 +61,30 @@ public class Quiz {
 	public static void quizend() {
 		System.out
 				.println("Herlichen Glückwunsch, Sie haben das Quiz erfolgreich beendet!");
+
+		System.out.println("Möchten Sie das Quiz erneut starten?");
+		System.out.println("Geben Sie JA oder NEIN ein!");
+
+		Console console = System.console();
+		String answer = console.readLine("Antwort: ");
+		System.out.println("Text: " + answer);
+		checkName(answer);
+	}
+
+	public static Boolean checkName(String name) {
+
+		if (name.equals("JA")) {
+			System.out.println(name + " ich möchte das Quiz wiederholen!");
+
+			quiz(0);
+
+			return true;
+		} else {
+			System.out.println("Nein ich möchte das Quiz nicht wiederholen!");
+			System.out.println("Sie haben das Quiz beendet!");
+			return false;
+
+		}
 	}
 
 }
