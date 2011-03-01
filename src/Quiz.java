@@ -68,21 +68,20 @@ public class Quiz {
 		Console console = System.console();
 		String answer = console.readLine("Antwort: ");
 		System.out.println("Text: " + answer);
+
 		checkName(answer);
 	}
 
-	public static Boolean checkName(String name) {
+	public static void checkName(String name) {
 
 		if (name.equals("JA")) {
 			System.out.println(name + " ich mšchte das Quiz wiederholen!");
 
 			quiz(0);
 
-			return true;
 		} else {
 			System.out.println("Nein ich mšchte das Quiz nicht wiederholen!");
 			System.out.println("Sie haben das Quiz beendet!");
-			return false;
 
 		}
 	}
