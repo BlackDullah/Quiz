@@ -8,6 +8,7 @@ public class Quiz {
 
 	int quizPosition = 0;
 	static ArrayList<String[]> values = new ArrayList<String[]>();
+	static String name = "";
 
 	/**
 	 * @param args
@@ -32,6 +33,14 @@ public class Quiz {
 		}
 
 		// showQuestions(values);
+		name();
+	}
+
+	public static void name() {
+
+		Console console = System.console();
+		name = console.readLine("Geben Sie Ihren Namen an: ");
+		System.out.println("Name: " + name);
 
 		System.out.println("Ein kleines Quiz...");
 		quiz(0);
@@ -72,16 +81,16 @@ public class Quiz {
 		checkName(answer);
 	}
 
-	public static void checkName(String name) {
+	public static void checkName(String ans) {
 
-		if (name.equals("JA")) {
-			System.out.println(name + " ich mšchte das Quiz wiederholen!");
+		if (ans.equals("JA")) {
+			System.out.println(ans + " ich mšchte das Quiz wiederholen!");
 
 			quiz(0);
 
 		} else {
 			System.out.println("Nein ich mšchte das Quiz nicht wiederholen!");
-			System.out.println("Sie haben das Quiz beendet!");
+			System.out.println(name + " haben das Quiz beendet!");
 
 		}
 	}
