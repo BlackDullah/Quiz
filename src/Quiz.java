@@ -89,10 +89,28 @@ public class Quiz {
 			quiz(0);
 
 		} else {
-			System.out.println("Nein ich moechte das Quiz nicht wiederholen!");
-			System.out.println(name + " hat das Quiz beendet!");
+			System.out.println("Bist du dir sicher?");
+
+			Console console = System.console();
+			String sure = console.readLine("Antwort: ");
+			System.out.println("Text: " + sure);
+
+			nachfragen(sure);
 
 		}
+	}
+
+	public static void nachfragen(String sure) {
+
+		if (sure.equals("JA")) {
+			System.out.println(name + " hat das Spiel beendet!");
+		} else if (sure.equals("NEIN")) {
+			quizend();
+
+		} else {
+			checkName("");
+		}
+
 	}
 
 }
