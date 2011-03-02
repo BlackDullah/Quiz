@@ -7,14 +7,22 @@ import java.util.ArrayList;
 public class Quiz {
 
 	int quizPosition = 0;
-	static ArrayList<String[]> values = new ArrayList<String[]>();
-	static String name = "";
+	ArrayList<String[]> values = new ArrayList<String[]>();
+	UserName userName;
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		Quiz quiz = new Quiz();
+		quiz.quizStart();
+	}
 
+	public Quiz() {
+		userName = new UserName();
+	}
+
+	public void quizStart() {
 		BufferedReader reader;
 		String zeile = null;
 
@@ -36,17 +44,17 @@ public class Quiz {
 		name();
 	}
 
-	public static void name() {
+	public void name() {
 
 		Console console = System.console();
-		name = console.readLine("Geben Sie Ihren Vornamen an: ");
-		System.out.println("Hallo " + name);
+		userName.name = console.readLine("Geben Sie Ihren Vornamen an: ");
+		System.out.println("Hallo " + userName.name);
 
 		System.out.println("Ich habe ein kleines Quiz fuer dich erstellt...");
 		quiz(0);
 	}
 
-	public static void quiz(int position) {
+	public void quiz(int position) {
 		if (position >= (values.size() - 1)) {
 			quizend();
 			return;
@@ -67,8 +75,8 @@ public class Quiz {
 
 	}
 
-	public static void quizend() {
-		System.out.println("Herlichen Glueckwunsch " + name);
+	public void quizend() {
+		System.out.println("Herlichen Glueckwunsch " + userName.name);
 		System.out.println("du hast das Quiz erfolgreich beendet!");
 
 		System.out.println("Moechtest du das Quiz erneut starten?");
@@ -81,7 +89,7 @@ public class Quiz {
 		checkName(answer);
 	}
 
-	public static void checkName(String ans) {
+	public void checkName(String ans) {
 
 		if (ans.equals("JA")) {
 			System.out.println(ans + " ich moechte das Quiz wiederholen!");
@@ -100,10 +108,10 @@ public class Quiz {
 		}
 	}
 
-	public static void nachfragen(String sure) {
+	public void nachfragen(String sure) {
 
 		if (sure.equals("JA")) {
-			System.out.println(name + " hat das Spiel beendet!");
+			System.out.println(userName.name + " hat das Spiel beendet!");
 		} else if (sure.equals("NEIN")) {
 			quizend();
 
