@@ -1,46 +1,27 @@
-import java.io.BufferedReader;
 import java.io.Console;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class Quiz {
 
 	int quizPosition = 0;
-	ArrayList<String[]> values = new ArrayList<String[]>();
+	int points = 0;
+
 	UserName userName;
+	Reader reader;
+	String myString = "";
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		Quiz quiz = new Quiz();
-		quiz.quizStart();
+
 	}
 
 	public Quiz() {
+		reader = new Reader();
 		userName = new UserName();
-	}
+		reader.quizStart();
 
-	public void quizStart() {
-		BufferedReader reader;
-		String zeile = null;
-
-		try {
-			reader = new BufferedReader(new FileReader("fragen.txt"));
-			zeile = reader.readLine();
-
-			while (zeile != null) {
-				values.add(zeile.split(";"));
-				zeile = reader.readLine();
-			}
-			// System.out.println(values.size());
-
-		} catch (IOException e) {
-			System.err.println("Error2 :" + e);
-		}
-
-		// showQuestions(values);
 		name();
 	}
 
@@ -55,21 +36,27 @@ public class Quiz {
 	}
 
 	public void quiz(int position) {
-		if (position >= (values.size() - 1)) {
+		if (position >= (reader.values.size() - 1)) {
 			quizend();
 			return;
 		}
-		System.out.println(values.get(position)[0]);
+		System.out.println(reader.values.get(position)[0]);
 		Console console = System.console();
-		String myString = console.readLine("Antwort: ");
+		myString = console.readLine("Antwort: ");
 
-		if (myString.equalsIgnoreCase(values.get(position + 1)[0])) {
-			System.out.println("Richtig");
+		if (myString.equalsIgnoreCase(reader.values.get(position + 1)[0])) {
+			points++;
+			System.out.println("Richtig, du hast " + points + " von 7 Punkten");
 			position = position + 2;
+
 			quiz(position);
 		}
 
 		else {
+			points--;
+			System.out
+					.println("Falsch, du hast einen Punkt abgezogen bekommen. Dein aktueller Punktestand lautet: "
+							+ points + " von 7 Punkten!");
 			quiz(position);
 		}
 
@@ -77,7 +64,8 @@ public class Quiz {
 
 	public void quizend() {
 		System.out.println("Herlichen Glueckwunsch " + userName.name);
-		System.out.println("du hast das Quiz erfolgreich beendet!");
+		System.out.println("du hast das Quiz erfolgreich beendet und " + points
+				+ " von 7 Punkten erreicht!");
 
 		System.out.println("Moechtest du das Quiz erneut starten?");
 		System.out.println("Geben Sie JA oder NEIN ein!");
