@@ -79,7 +79,7 @@ public class Quiz {
 
 	public void checkName(String ans) {
 
-		if (ans.equals("JA")) {
+		if (ans.equalsIgnoreCase("JA")) {
 			System.out.println(ans + " ich moechte das Quiz wiederholen!");
 
 			quiz(0);
@@ -98,7 +98,7 @@ public class Quiz {
 
 	public void nachfragen(String sure) {
 
-		if (sure.equals("JA")) {
+		if (sure.equalsIgnoreCase("JA")) {
 			System.out.println(userName.name + " hat das Spiel beendet!");
 		} else if (sure.equals("NEIN")) {
 			quizend();
